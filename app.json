@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "SafePassword",
+    "slug": "SafePassword",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/Logo.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/Logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#202134"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "splash": {
+        "image": "./assets/Logo.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#202134"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/Logo.png",
+        "backgroundColor": "#202134"
+      },
+      "splash": {
+        "image": "./assets/Logo.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#202134"
+      }
+    },
+    "web": {
+      "favicon": "./assets/Logo.png"
+    },
+    "plugins": [
+      "expo-font"
+    ]
+  }
+}
