@@ -4,7 +4,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { useState } from 'react';
 
 
-const SingnUpPage = ({ handleAuthentication, visible, setVisible, email, setEmail, password, setPassword, confirmPassword, setConfirmPassword }) => {
+const SignUpPage = ({ handleAuthentication, visible, setVisible, email, setEmail, password, setPassword, confirmPassword, setConfirmPassword }) => {
 
     return (
         <Modal visible={visible} animationType='slide'>
@@ -15,4 +15,4 @@ const SingnUpPage = ({ handleAuthentication, visible, setVisible, email, setEmai
     );
 };
 
-export default SingnUpPage;
+export default SignUpPage;
