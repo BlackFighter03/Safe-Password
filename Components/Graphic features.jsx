@@ -24,12 +24,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.5)', 
     justifyContent: 'center',
-    alignItems: 'center', 
+    alignItems: 'center',
   },
 
   tableContent: {
     backgroundColor: '#202134', 
-    padding: 1.5,
+    paddingTop: '2%',
+    paddingBottom: '2%',
     borderRadius: 5, 
     width: '75%', 
     elevation: 5, 
@@ -59,9 +60,24 @@ const styles = StyleSheet.create({
     
   },
 
+  textHeaderTable: {
+    marginLeft: '5%',
+    fontWeight: 'bold',
+    fontSize: 25,
+    color: '#ffff',
+    
+  },
+
   text: {
     marginLeft: '5%',
     fontSize: 17,
+    color: '#ffff',
+    
+  },
+
+  textTable: {
+    marginLeft: '5%',
+    fontSize: 20,
     color: '#ffff',
     
   },
@@ -111,6 +127,13 @@ textFinishTable : {
     fontSize: 20,
     color: '#ffff',
     
+  },
+
+  textReturn: {
+    marginLeft: '85%',
+    marginRight: '2%',
+    fontSize: 17,
+    color: '#ffff',
   },
 
   subtext: {
@@ -171,6 +194,8 @@ textFinishTable : {
     color: '#ffffff',
     fontSize: 27.5,
     marginTop: '7%',
+    marginRight: '2%',
+    marginLeft: '2%',
     marginBottom: '5%',
     backgroundColor: '#202134',
     marginLeft: '85%',
