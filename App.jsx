@@ -20,6 +20,7 @@ const App = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [user, setUser] = useState(null);
   const [showSignUp, setShowSignUp] = useState(false);
+  const [warning, setWarning] = useState(false);
 
   /**
    * Funzione che si occupa di effettuare il cambio automatico dell'autenticazione e dell'utente
@@ -48,7 +49,7 @@ const App = () => {
           setPassword(removeFinalSpaces(password));
           setConfirmPassword(removeFinalSpaces(confirmPassword));
           if (password !== confirmPassword) {
-            Alert.alert('Attenzione', 'Le password non sono uguali!');
+            setWarning(true);
             return;
           } else {
             try {
@@ -82,6 +83,8 @@ const App = () => {
       handleAuthentication={handleAuthentication}
       showSignUp={showSignUp}
       setShowSignUp={setShowSignUp}
+      warning={warning}
+      setWarning={setWarning}
     />
   );
 };
