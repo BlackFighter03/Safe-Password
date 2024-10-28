@@ -5,6 +5,22 @@ import { useState } from 'react';
 
 
 const SignUpPage = ({ handleAuthentication, visible, setVisible, email, setEmail, password, setPassword, confirmPassword, setConfirmPassword }) => {
+    const [showPassword, setShowPassword] = useState(true);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(true);
+    const [error, setError] = useState(false);
+    const [padTop, setPadTop] = useState("20%");
+
+    const subscribe = () => {
+        if (password.length < 5) {
+            setError(true);
+            setPadTop("20%");
+        } else {
+            setError(false);
+            setPadTop("20%")
+            handleAuthentication(email, password, confirmPassword);
+        }
+
+    }
 
     return (
         <Modal visible={visible} animationType='slide'>
