@@ -30,7 +30,9 @@ const SignInPage = ({
   setConfirmPassword,
   handleAuthentication,
   showSignUp,
-  setShowSignUp
+  setShowSignUp,
+  warning,
+  setWarning
   }) => {
   const [showPassword, setShowPassword] = useState(true);
   const [forgotPasswordEmail, setForgotPasswordEmail] = useState('');
@@ -108,6 +110,8 @@ const SignInPage = ({
         setConfirmPassword={setConfirmPassword}
         showSignUp={showSignUp}
         setShowSignUp={setShowSignUp}
+        warning={warning}
+        setWarning={setWarning}
       />
     </View>
   );
