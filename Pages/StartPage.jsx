@@ -16,7 +16,9 @@ const StartPage = ({
   setConfirmPassword,
   handleAuthentication,
   showSignUp,
-  setShowSignUp
+  setShowSignUp,
+  warning,
+  setWarning
   }) => {
   return (
     <View style={styles.container}>
@@ -37,6 +39,8 @@ const StartPage = ({
           handleAuthentication={handleAuthentication}
           showSignUp={showSignUp}
           setShowSignUp={setShowSignUp}
+          warning={warning}
+          setWarning={setWarning}
         />
       )}
     </View>
