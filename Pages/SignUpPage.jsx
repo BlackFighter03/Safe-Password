@@ -1,10 +1,11 @@
 import { View, Text, TextInput, Button, Modal, Pressable } from 'react-native';
 import { styles } from '../Components/Graphic features';
 import { FontAwesome } from '@expo/vector-icons';
+import Table from '../Components/Table';
 import { useState } from 'react';
 
 
-const SignUpPage = ({ handleAuthentication, visible, setVisible, email, setEmail, password, setPassword, confirmPassword, setConfirmPassword }) => {
+const SignUpPage = ({ handleAuthentication, visible, setVisible, email, setEmail, password, setPassword, confirmPassword, setConfirmPassword, warning, setWarning }) => {
     const [showPassword, setShowPassword] = useState(true);
     const [showConfirmPassword, setShowConfirmPassword] = useState(true);
     const [error, setError] = useState(false);
@@ -23,7 +24,7 @@ const SignUpPage = ({ handleAuthentication, visible, setVisible, email, setEmail
     }
 
     return (
-        <Modal visible={visible} animationType='slide'>
+        <Modal visible={visible} animationType='fade'>
             <View style={styles.container}>
                 <Text style={styles.title} paddingTop={padTop}>Safe Password</Text>
                 <View marginTop='15%'>
@@ -80,6 +81,12 @@ const SignUpPage = ({ handleAuthentication, visible, setVisible, email, setEmail
                         }}>{"Esegui l'accesso"}</Text>
                     </Pressable>
                 </View>
+                <Table
+                    visible={warning}
+                    setVisible={() => setWarning(false)}
+                    title={"Attenzione"}
+                    msg={"Le password non sono uguali!"}
+                />
             </View>
         </Modal>
     );
