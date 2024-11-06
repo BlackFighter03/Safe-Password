@@ -67,7 +67,7 @@ const App = () => {
         }
       }
     } catch (error) {
-      Alert.alert("Attenzione", "Email e/o password non sono corrette");
+      setWarning(true);
     }
   };
 
