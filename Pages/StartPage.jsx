@@ -18,7 +18,9 @@ const StartPage = ({
   showSignUp,
   setShowSignUp,
   warning,
-  setWarning
+  setWarning,
+  warningSignUp,
+  setWarningSignUp
   }) => {
   return (
     <View style={styles.container}>
@@ -41,6 +43,8 @@ const StartPage = ({
           setShowSignUp={setShowSignUp}
           warning={warning}
           setWarning={setWarning}
+          warningSignUp={warningSignUp}
+          setWarningSignUp={setWarningSignUp}
         />
       )}
     </View>
