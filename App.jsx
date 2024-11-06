@@ -21,6 +21,7 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [showSignUp, setShowSignUp] = useState(false);
   const [warning, setWarning] = useState(false);
+  const [warningSignUp, setWarningSignUp] = useState(false);
 
   /**
    * Funzione che si occupa di effettuare il cambio automatico dell'autenticazione e dell'utente
@@ -49,14 +50,14 @@ const App = () => {
           setPassword(removeFinalSpaces(password));
           setConfirmPassword(removeFinalSpaces(confirmPassword));
           if (password !== confirmPassword) {
-            setWarning(true);
+            setWarningSignUp(true);
             return;
           } else {
             try {
               await createUser(auth, email, password);
               console.log('User created successfully!');
             } catch (error) {
-              Alert.alert("Avviso", "L'account esiste già");
+              setWarningSignUp(true);
             }
           }
         } else {
@@ -85,6 +86,8 @@ const App = () => {
       setShowSignUp={setShowSignUp}
       warning={warning}
       setWarning={setWarning}
+      warningSignUp={warningSignUp}
+      setWarningSignUp={setWarningSignUp}
     />
   );
 };
