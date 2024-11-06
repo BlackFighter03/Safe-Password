@@ -5,7 +5,7 @@ import Table from '../Components/Table';
 import { useState } from 'react';
 
 
-const SignUpPage = ({ handleAuthentication, visible, setVisible, email, setEmail, password, setPassword, confirmPassword, setConfirmPassword, warning, setWarning }) => {
+const SignUpPage = ({ handleAuthentication, visible, setVisible, email, setEmail, password, setPassword, confirmPassword, setConfirmPassword, warningSignUp, setWarningSignUp }) => {
     const [showPassword, setShowPassword] = useState(true);
     const [showConfirmPassword, setShowConfirmPassword] = useState(true);
     const [error, setError] = useState(false);
@@ -15,9 +15,9 @@ const SignUpPage = ({ handleAuthentication, visible, setVisible, email, setEmail
         if (password.length < 5) {
             setError(true);
             setPadTop("20%");
-        } else {
+        }else {
             setError(false);
-            setPadTop("20%")
+            setPadTop("20%");
             handleAuthentication(email, password, confirmPassword);
         }
 
@@ -82,10 +82,10 @@ const SignUpPage = ({ handleAuthentication, visible, setVisible, email, setEmail
                     </Pressable>
                 </View>
                 <Table
-                    visible={warning}
-                    setVisible={() => setWarning(false)}
-                    title={"Attenzione"}
-                    msg={"Le password non sono uguali!"}
+                    visible={warningSignUp}
+                    setVisible={() => setWarningSignUp(false)}
+                    title={(password !== confirmPassword) ? "Attenzione" : "Avviso"}
+                    msg={(password !== confirmPassword) ? "Le password non sono uguali!" : "L'account esiste già"}
                 />
             </View>
         </Modal>
