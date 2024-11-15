@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, TouchableOpacity, Alert, FlatList } from 'react-native';
 import { styles } from '../Components/Graphic features';
 
-/* teast
+/* teast secondo 
 
 
 /**
