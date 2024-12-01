@@ -5,7 +5,7 @@ import { styles } from '../Components/Graphic features';
 import { useState } from 'react';
 import Table from '../Components/Table';
 
-const RecoveryPassword = ({ auth, visible, forgotPasswordEmail, setForgotPasswordEmail, handleSignInPage }) => {
+const RecoveryPasswordPage = ({ auth, visible, forgotPasswordEmail, setForgotPasswordEmail, handleSignInPage }) => {
 
   const [title, setTitle] = useState("");
   const [msg, setMsg] = useState("");
@@ -59,4 +59,4 @@ const RecoveryPassword = ({ auth, visible, forgotPasswordEmail, setForgotPasswor
   );
 };
 
-export default RecoveryPassword;
+export default RecoveryPasswordPage;
