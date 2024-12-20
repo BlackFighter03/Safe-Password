@@ -3,8 +3,9 @@ import { View, Text, TextInput, Button, Pressable, TouchableOpacity } from 'reac
 import { styles } from '../Components/Graphic features';
 import { auth } from '../Components/Firebase';
 import { FontAwesome } from '@expo/vector-icons';
-import RecoveryPassword from './RecoveryPassword';
+import RecoveryPasswordPage from './RecoveryPasswordPage';
 import SignUpPage from './SignUpPage';
+import Table from '../Components/Table';
 
 
 /**
@@ -32,8 +33,10 @@ const SignInPage = ({
   showSignUp,
   setShowSignUp,
   warning,
-  setWarning
-  }) => {
+  setWarning,
+  warningSignUp,
+  setWarningSignUp
+}) => {
   const [showPassword, setShowPassword] = useState(true);
   const [forgotPasswordEmail, setForgotPasswordEmail] = useState('');
   const [showForgotPasswordForm, setShowForgotPasswordForm] = useState(false);
@@ -91,7 +94,7 @@ const SignInPage = ({
           </View>
         </View>
       </View>
-      <RecoveryPassword
+      <RecoveryPasswordPage
         auth={auth}
         visible={showForgotPasswordForm}
         forgotPasswordEmail={forgotPasswordEmail}
@@ -110,8 +113,14 @@ const SignInPage = ({
         setConfirmPassword={setConfirmPassword}
         showSignUp={showSignUp}
         setShowSignUp={setShowSignUp}
-        warning={warning}
-        setWarning={setWarning}
+        warningSignUp={warningSignUp}
+        setWarningSignUp={setWarningSignUp}
+      />
+      <Table
+        visible={warning}
+        setVisible={() => setWarning(false)}
+        title={"Attenzione"}
+        msg={"Email e/o password non sono corrette"}
       />
     </View>
   );
