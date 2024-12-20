@@ -14,7 +14,7 @@ Pages:
   
     AuthenticatedPage.jsx
   
-    RecoveryPassword.jsx
+    RecoveryPasswordPage.jsx
 
     ChangePasswordPage.jsx
   
