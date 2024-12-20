@@ -1,4 +1,5 @@
 import { View, Text, TextInput, Button, Modal, Pressable } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { styles } from '../Components/Graphic features';
 import { FontAwesome } from '@expo/vector-icons';
 import Table from '../Components/Table';
@@ -15,79 +16,86 @@ const SignUpPage = ({ handleAuthentication, visible, setVisible, email, setEmail
         if (password.length < 5) {
             setError(true);
             setPadTop("20%");
-        }else {
+        } else {
             setError(false);
             setPadTop("20%");
             handleAuthentication(email, password, confirmPassword);
+            setVisible(false);
         }
 
     }
 
     return (
         <Modal visible={visible} animationType='fade'>
-            <View style={styles.container}>
-                <Text style={styles.title} paddingTop={padTop}>Safe Password</Text>
-                <View marginTop='15%'>
-                    <Text style={styles.text}>Inserisci indirizzo email</Text>
-                    <TextInput style={styles.textInput} placeholder='example@email.com' autoCapitalize="none" onChangeText={setEmail} value={email} />
-                    <Text style={styles.text} marginTop='5%'>Inserisci password</Text>
+            <KeyboardAwareScrollView
+                style={styles.container} // Imposta lo stile desiderato per la ScrollView. Assicurati che "flex: 1" sia presente.
+                resetScrollToCoords={{ x: 0, y: 0 }}
+                scrollEnabled={true}
+            >
+                <View style={styles.container}>
+                    <Text style={styles.title} paddingTop={padTop}>Safe Password</Text>
+                    <View marginTop='15%'>
+                        <Text style={styles.text}>Inserisci indirizzo email</Text>
+                        <TextInput style={styles.textInput} placeholder='example@email.com' autoCapitalize="none" onChangeText={setEmail} value={email} />
+                        <Text style={styles.text} marginTop='5%'>Inserisci password</Text>
+                        <View>
+                            <TextInput
+                                style={styles.pwdInput}
+                                secureTextEntry={showPassword}
+                                placeholder='Password'
+                                onChangeText={setPassword}
+                                value={password}
+                            />
+                            {showPassword ? (
+                                <FontAwesome name="eye" style={styles.fontAwesomeEye} onPress={() => setShowPassword(!showPassword)} />
+                            ) : (
+                                <FontAwesome name="eye-slash" style={styles.fontAwesomeEye} onPress={() => setShowPassword(!showPassword)} />
+                            )}
+                        </View>
+                    </View>
+                    <Text style={styles.text} marginTop='5%'>Ripeti password</Text>
                     <View>
                         <TextInput
                             style={styles.pwdInput}
-                            secureTextEntry={showPassword}
-                            placeholder='Password'
-                            onChangeText={setPassword}
-                            value={password}
+                            secureTextEntry={showConfirmPassword}
+                            placeholder='Conferma password'
+                            onChangeText={setConfirmPassword}
+                            value={confirmPassword}
                         />
-                        {showPassword ? (
-                            <FontAwesome name="eye" style={styles.fontAwesomeEye} onPress={() => setShowPassword(!showPassword)} />
+                        {showConfirmPassword ? (
+                            <FontAwesome name="eye" style={styles.fontAwesomeEye} onPress={() => setShowConfirmPassword(!showConfirmPassword)} />
                         ) : (
-                            <FontAwesome name="eye-slash" style={styles.fontAwesomeEye} onPress={() => setShowPassword(!showPassword)} />
+                            <FontAwesome name="eye-slash" style={styles.fontAwesomeEye} onPress={() => setShowConfirmPassword(!showConfirmPassword)} />
                         )}
                     </View>
-                </View>
-                <Text style={styles.text} marginTop='5%'>Ripeti password</Text>
-                <View>
-                    <TextInput
-                        style={styles.pwdInput}
-                        secureTextEntry={showConfirmPassword}
-                        placeholder='Conferma password'
-                        onChangeText={setConfirmPassword}
-                        value={confirmPassword}
-                    />
-                    {showConfirmPassword ? (
-                        <FontAwesome name="eye" style={styles.fontAwesomeEye} onPress={() => setShowConfirmPassword(!showConfirmPassword)} />
-                    ) : (
-                        <FontAwesome name="eye-slash" style={styles.fontAwesomeEye} onPress={() => setShowConfirmPassword(!showConfirmPassword)} />
-                    )}
-                </View>
-                <View marginTop='20%' marginLeft='30%' marginRight='30%'>
-                    <Button title='Iscriviti' style={styles.button} onPress={subscribe} color='#00e480' />
-                </View>
-                {error ?
-                    <View marginTop='10%'>
-                        <Text style={styles.textWarning}>La password deve essere almeno di 6 caratteri</Text>
+                    <View marginTop='20%' marginLeft='30%' marginRight='30%'>
+                        <Button title='Iscriviti' style={styles.button} onPress={subscribe} color='#00e480' />
                     </View>
-                    :
-                    null}
-                <View marginTop='12%'>
-                    <Text style={styles.subtext}>Sei già iscritto?</Text>
-                    <Pressable style={styles.button}>
-                        <Text style={styles.link} onPress={() => {
-                            setEmail("");
-                            setVisible(false);
-                            setPassword();
-                            setShowPassword(true);
-                        }}>{"Esegui l'accesso"}</Text>
-                    </Pressable>
+                    {error ?
+                        <View marginTop='10%'>
+                            <Text style={styles.textWarning}>La password deve essere almeno di 6 caratteri</Text>
+                        </View>
+                        :
+                        null}
+                    <View marginTop='12%'>
+                        <Text style={styles.subtext}>Sei già iscritto?</Text>
+                        <Pressable style={styles.button}>
+                            <Text style={styles.link} onPress={() => {
+                                setEmail("");
+                                setVisible(false);
+                                setPassword();
+                                setShowPassword(true);
+                            }}>{"Esegui l'accesso"}</Text>
+                        </Pressable>
+                    </View>
+                    <Table
+                        visible={warningSignUp}
+                        setVisible={() => setWarningSignUp(false)}
+                        title={(password !== confirmPassword) ? "Attenzione" : "Avviso"}
+                        msg={(password !== confirmPassword) ? "Le password non sono uguali!" : "L'account esiste già"}
+                    />
                 </View>
-                <Table
-                    visible={warningSignUp}
-                    setVisible={() => setWarningSignUp(false)}
-                    title={(password !== confirmPassword) ? "Attenzione" : "Avviso"}
-                    msg={(password !== confirmPassword) ? "Le password non sono uguali!" : "L'account esiste già"}
-                />
-            </View>
+            </KeyboardAwareScrollView>
         </Modal>
     );
 };
