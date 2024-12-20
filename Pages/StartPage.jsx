@@ -28,7 +28,9 @@ const StartPage = ({
         <AuthenticatedPage
           user={user}
           email={email}
+          password={password}
           handleAuthentication={handleAuthentication}
+          setPassword={setPassword}
         />
       ) : (
         <SignInPage
