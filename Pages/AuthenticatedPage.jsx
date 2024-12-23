@@ -302,7 +302,7 @@ const AuthenticatedPage = ({ user, email, password, setPassword, handleAuthentic
         backgroundColor="#00e480"
         leftComponent={
           <View>
-            <TouchableOpacity onPress={() => setIsOpenSideMenu(true)}>
+            <TouchableOpacity onPress={() => setIsOpenSideMenu(true)} style={{paddingHorizontal: '10%', paddingVertical:'4%'}}>
                {/**handleAuthentication usata per il logout*/}
                <MaterialCommunityIcons name="menu" size={24} color="white" />
             </TouchableOpacity>
@@ -311,7 +311,7 @@ const AuthenticatedPage = ({ user, email, password, setPassword, handleAuthentic
         centerComponent={{ text: 'Safe Password', style: styles.textHeader }}
         rightComponent={
           <View>
-            <TouchableOpacity onPress={handleAddPassword}>
+            <TouchableOpacity onPress={handleAddPassword} style={{paddingHorizontal: '10%', paddingVertical:'4%'}}>
               <Icon type="materialicons" name="add-circle" color="white" />
             </TouchableOpacity>
           </View>
