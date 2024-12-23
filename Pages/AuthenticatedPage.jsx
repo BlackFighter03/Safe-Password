@@ -96,6 +96,51 @@ const AuthenticatedPage = ({ user, email, password, setPassword, handleAuthentic
     updateLocalFile(); // Chiama la funzione per aggiornare il file all'avvio
   }, [decryptedPasswords]); // Esegui l'effetto ogni volta che 'passwords' cambia
 
+  /**
+   * downloadFile: Scarica il file delle password da Firebase Storage.
+   */
+  const downloadFile = async () => {
+    setIsLoading(true); // Inizia il caricamento
+    try {
+      console.log('Provando a scaricare il file...');
+      // Ottiene l'URL di download del file da Firebase Storage
+      const downloadURL = await getDownloadURL(storageRef);
+      console.log('URL di download:', downloadURL);
+      // Scarica il file da Firebase Storage e lo salva nel file system del dispositivo
+      const { uri: downloadedFileUri } = await FileSystem.downloadAsync(downloadURL, localFilePath);
+      console.log('File scaricato in:', downloadedFileUri);
+      // Sposta il file scaricato nella posizione finale nel file system
+      await FileSystem.moveAsync({
+        from: downloadedFileUri,
+        to: localFilePath,
+      });
+      console.log('File spostato con successo!');
+      // Legge il contenuto del file come stringa
+      const fileContent = await FileSystem.readAsStringAsync(localFilePath);
+      console.log('Contenuto del file:\n', fileContent);
+      // Converte il contenuto del file (JSON) in un array di oggetti JavaScript
+      const passwordsData = JSON.parse(fileContent);
+      if (passwordsData.length > 0) {
+        const decryptedData = passwordsData.map((item) => ({
+          website: decriptaTesto(user.uid, item.website),
+          username: decriptaTesto(user.uid, item.username),
+          password: decriptaTesto(user.uid, item.password),
+        }));
+        setDecryptedPasswords(decryptedData);
+      } else {
+        setDecryptedPasswords([]);
+      }
+      setIsLoading(false); // Fine caricamento
+    } catch (error) {
+      // Gestione degli errori durante il download
+      console.log(error);
+      createEmptyFileOnDevice();
+      // Imposta 'passwords' come un array vuoto
+      setDecryptedPasswords([]);
+      setIsLoading(false); // Fine caricamento
+    }
+  };
+
   
   return (  
     <View style={styles.container}>
