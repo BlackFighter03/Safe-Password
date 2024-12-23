@@ -186,6 +186,51 @@ const AuthenticatedPage = ({ user, email, password, setPassword, handleAuthentic
     // Mostra il modale di aggiunta
     setModalVisible(true);
   };
+
+    /**
+   * handleSavePassword: Gestisce il salvataggio di una nuova password nell'array e l'upload su Firebase.
+   */
+  const handleSavePassword = async () => {
+    // Chiude il modale
+    setModalVisible(false);
+
+    try {
+      // Crea un nuovo oggetto con i dati della password
+      const newPasswordData = {
+        website: websiteTemp,
+        username: usernameTemp,
+        password: passwordTemp,
+      };
+
+      // Controlla se una password identica esiste già nell'array
+      const isPresented = decryptedPasswords.find(
+        (value) =>
+          value.website === newPasswordData.website &&
+          value.username === newPasswordData.username
+      );
+
+      // Se non ci sono duplicati
+      if (!isPresented) {
+        // Aggiorna lo stato 'passwords' aggiungendo la nuova password e ordinando l'array
+        setDecryptedPasswords((prevPasswords) => [...prevPasswords, newPasswordData].sort(sortedStrings));
+      } else {
+        // Mostra un messaggio di avviso se la password è duplicata
+        Alert.alert('Attenzione', 'Un account con lo stesso sito e nome utente è stato già salvato');
+      }
+
+      // Reimposta i campi di input
+      setWebsiteTemp('');
+      setUsernameTemp('');
+      setPasswordTemp('');
+
+      console.log('Password aggiunta con successo!');
+
+    } catch (error) {
+      console.error("Errore durante l'aggiunta della password:", error);
+    }
+  };
+
+  
   
   return (  
     <View style={styles.container}>
