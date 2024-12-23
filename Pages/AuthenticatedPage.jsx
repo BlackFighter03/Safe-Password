@@ -230,7 +230,20 @@ const AuthenticatedPage = ({ user, email, password, setPassword, handleAuthentic
     }
   };
 
-  
+  /**
+   * configureOpenMenu: Configura e apre il menu di gestione della password (modifica/elimina).
+   * Imposta anche lo stato del componente con i dati della password selezionata.
+   */
+  const configureOpenMenu = (item) => {
+    // Trova l'indice dell'elemento selezionato nell'array
+    const index = decryptedPasswords.indexOf(item);
+    // Aggiorna lo stato con l'indice e i dati dell'elemento
+    setIndex(index);
+    setWebsiteTemp(item.website);
+    setUsernameTemp(item.username);
+    setPasswordTemp(item.password);
+  };
+
   
   return (  
     <View style={styles.container}>
