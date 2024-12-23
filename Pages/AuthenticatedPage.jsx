@@ -244,6 +244,33 @@ const AuthenticatedPage = ({ user, email, password, setPassword, handleAuthentic
     setPasswordTemp(item.password);
   };
 
+  /**
+   * changePassword: Gestisce la modifica di una password esistente.
+   */
+  const changePassword = () => {
+    // Chiude il modale di modifica
+    setModalVisibleForChange(false);
+    // Aggiorna lo stato 'passwords' con la password modificata
+    setDecryptedPasswords((prevPasswords) =>
+      prevPasswords.map((password, i) =>
+        // Modifica solo la password con l'indice corrispondente
+        i === index
+          ? {
+            ...password,
+            website: websiteTemp,
+            username: usernameTemp,
+            password: passwordTemp,
+          }
+          : password // Mantiene le altre password invariate
+      ).sort(sortedStrings) // Ordina l'array dopo la modifica
+    );
+
+    // Reimposta lo stato del componente
+    setWebsiteTemp('');
+    setUsernameTemp('');
+    setPasswordTemp('');
+    setIndex(-1);
+  };
   
   return (  
     <View style={styles.container}>
