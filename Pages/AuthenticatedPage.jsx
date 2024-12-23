@@ -69,6 +69,33 @@ const AuthenticatedPage = ({ user, email, password, setPassword, handleAuthentic
     // Rimuove il listener quando il componente viene smontato
     return () => unsubscribe();
   }, []); // Esegue l'effetto solo quando il componente viene montato o smontato
+
+  // --- Effetto collaterale per aggiornare il file locale quando 'passwords' cambia ---
+
+  useEffect(() => {
+    const updateLocalFile = async () => {
+      if (isLoading) return; // Esci se il file è in caricamento
+      try {
+        const encryptedPasswords = decryptedPasswords.map((item) => ({
+          website: criptaTesto(user.uid, item.website),
+          username: criptaTesto(user.uid, item.username),
+          password: criptaTesto(user.uid, item.password),
+        }));
+
+        await FileSystem.writeAsStringAsync(
+          localFilePath,
+          JSON.stringify(encryptedPasswords)
+        );
+        console.log('File locale aggiornato con successo!');
+        uploadFile();
+      } catch (error) {
+        console.error('Errore durante l\'aggiornamento del file locale:', error);
+      }
+    };
+
+    updateLocalFile(); // Chiama la funzione per aggiornare il file all'avvio
+  }, [decryptedPasswords]); // Esegui l'effetto ogni volta che 'passwords' cambia
+
   
   return (  
     <View style={styles.container}>
