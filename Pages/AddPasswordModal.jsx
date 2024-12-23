@@ -14,6 +14,54 @@ const AddPasswordModal = ({ websiteTemp, usernameTemp, passwordTemp, visible, on
   const [showPassword, setShowPassword] = useState(true);
   const [inputPercentualSetting, setInputPercentualSetting] = useState('50%');
 
+  const handleSave = () => {
+    setWebsiteTemp(removeFinalSpaces(websiteTemp));
+    setUsernameTemp(removeFinalSpaces(usernameTemp));
+    setPasswordTemp(removeFinalSpaces(passwordTemp));
+
+    if (websiteTemp == "" || usernameTemp == "" || passwordTemp == "") {
+      let count = 0;
+      if (websiteTemp == "") {
+        count++;
+        setWebsiteVoid(true);
+      }
+      else
+        setWebsiteVoid(false);
+
+      if (usernameTemp == "") {
+        setUsernameVoid(true);
+        count++;
+      } else
+        setUsernameVoid(false);
+      if (passwordTemp == "") {
+        setPasswordVoid(true);
+        count++;
+      } else
+        setPasswordVoid(false);
+      let percentualInput = 5 - count;
+      setInputPercentualSetting(percentualInput + "0%");
+
+    } else {
+      setWebsiteVoid(false);
+      setUsernameVoid(false);
+      setPasswordVoid(false);
+      setInputPercentualSetting("50%");
+      onSave();
+    }
+  };
+
+  const reset = () => {
+    setWebsiteTemp("");
+    setUsernameTemp("");
+    setPasswordTemp("");
+    setInputPercentualSetting("50%");
+    setWebsiteVoid(false);
+    setUsernameVoid(false);
+    setPasswordVoid(false);
+    setShowPassword(true);
+    onCancel();
+  }
+
   return (
     <Modal visible={visible} animationType="slide">
       <KeyboardAwareScrollView
