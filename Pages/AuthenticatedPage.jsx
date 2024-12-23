@@ -271,6 +271,28 @@ const AuthenticatedPage = ({ user, email, password, setPassword, handleAuthentic
     setPasswordTemp('');
     setIndex(-1);
   };
+
+  /**
+   * removePassword: Gestisce la rimozione di una password dall'array.
+   */
+  const removePassword = () => {
+    // Aggiorna lo stato 'passwords' rimuovendo la password selezionata
+    setDecryptedPasswords((prevPasswords) =>
+      prevPasswords.filter(
+        (password) =>
+          // Mantiene solo le password che non corrispondono ai dati da rimuovere
+          password.website !== websiteTemp ||
+          password.username !== usernameTemp ||
+          password.password !== passwordTemp
+      )
+    );
+
+    // Reimposta lo stato del componente
+    setWebsiteTemp('');
+    setUsernameTemp('');
+    setPasswordTemp('');
+  };
+
   
   return (  
     <View style={styles.container}>
