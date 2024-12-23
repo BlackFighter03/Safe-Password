@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import SideMenu from './SideMenu';
 
 const styles = StyleSheet.create({
   container: {
@@ -30,7 +31,8 @@ const styles = StyleSheet.create({
   tableContent: {
     backgroundColor: '#202134', 
     paddingTop: '2%',
-    paddingBottom: '2%',
+    paddingBottom: '3%',
+    paddingHorizontal: '0.75%',
     borderRadius: 5, 
     width: '75%', 
     elevation: 5, 
@@ -73,6 +75,13 @@ const styles = StyleSheet.create({
     fontSize: 17,
     color: '#ffff',
     
+  },
+
+  textSideMenu: {
+    textAlign: 'center',
+    fontSize: 17,
+    color: '#ffff',
+    flexWrap: 'nowrap',    
   },
 
   textTable: {
@@ -130,6 +139,7 @@ textFinishTable : {
   },
 
   textReturn: {
+    marginTop: '3%',
     marginLeft: '85%',
     marginRight: '2%',
     fontSize: 17,
@@ -163,6 +173,26 @@ textFinishTable : {
     fontSize: 17,
   },
 
+  buttonFirstSideMenu: {
+      paddingVertical:'1.1%',
+      paddingStart: '35.05%',
+      paddingEnd: '35.05%',
+      backgroundColor: '#01df81',
+      borderColor: "white",
+      borderWidth: 0.8
+  },
+
+  buttonSideMenu: {
+    paddingVertical:'1.1%',
+    paddingLeft:"37.9%",
+    paddingRight:"37.9%",
+    backgroundColor: '#01df81',
+    borderColor: "white",
+    borderLeftWidth: 0.8,
+    borderRightWidth:0.8,
+    borderBottomWidth:0.8
+},
+
   materialIconsAdd: {
     padding: '0.85%',
     position: 'absolute',
@@ -174,10 +204,9 @@ textFinishTable : {
     position: 'absolute',
     color: 'grey',
     fontSize: 27.5,
-    padding: '1%',
     marginTop: '5%',
     backgroundColor: '#ffff',
-    marginLeft: '85%',
+    marginLeft: '87%',
   },
 
   fontAwesomeEyeItem: {
