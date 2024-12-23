@@ -1,7 +1,7 @@
 import ManageMenu from './ManageMenu';
 import { View, Text, TouchableOpacity } from 'react-native';
 import Entypo from '@expo/vector-icons/Entypo'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { styles } from './Graphic features';
 import { FontAwesome } from '@expo/vector-icons';
 import Table from './Table';
@@ -12,6 +12,20 @@ const Item = ({ item, configureOpenMenu, setModalVisible, removePassword }) => {
     const [showPassword, setShowPassword] = useState(false);
     const [showInfo, setShowInfo] = useState(false);
     const [pwd, setPwd] = useState('*******');
+    const [eye, setEye] = useState('eye');
+
+    useEffect(() => {
+        // Listener per lo stato di autenticazione di Firebase
+        const setIcon = () => {
+          if (showPassword)
+            setEye('eye');
+          else
+            setEye('eye-slash');
+        };
+    
+        // Rimuove il listener quando il componente viene smontato
+        return () => setIcon();
+      }, [showPassword]); // Esegue l'effetto solo quando il componente viene montato o smontato
 
     const handleOpenMenu = () => {
         configureOpenMenu(item);
@@ -36,8 +50,8 @@ const Item = ({ item, configureOpenMenu, setModalVisible, removePassword }) => {
                     setShowPassword(!showPassword);
                     }}>
                     <FontAwesome
+                        name={eye}
                         style={styles.fontAwesomeEyeItem}
-                        name={showPassword ? 'eye' : 'eye-slash'}
                     />
                 </TouchableOpacity>
             </View>
