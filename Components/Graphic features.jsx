@@ -186,7 +186,7 @@ textFinishTable : {
     paddingVertical:'1.1%',
     paddingLeft:"37.9%",
     paddingRight:"37.9%",
-    backgroundColor: '#01df81',
+    backgroundColor: 'rgb(15, 193, 110)',
     borderColor: "white",
     borderLeftWidth: 0.8,
     borderRightWidth:0.8,
