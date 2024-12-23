@@ -55,6 +55,20 @@ const AuthenticatedPage = ({ user, email, password, setPassword, handleAuthentic
   // Flag per indicare se è in corso il caricamento del file
   const [isLoading, setIsLoading] = useState(true); // isLoading è ora gestito come stato
 
+  // --- Effetto collaterale per il download iniziale delle password ---
+
+  useEffect(() => {
+    // Listener per lo stato di autenticazione di Firebase
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+      if (user && email) {
+        // Se l'utente è autenticato, scarica le password da Firebase
+        await downloadFile();
+      }
+    });
+
+    // Rimuove il listener quando il componente viene smontato
+    return () => unsubscribe();
+  }, []); // Esegue l'effetto solo quando il componente viene montato o smontato
   
   return (  
     <View style={styles.container}>
