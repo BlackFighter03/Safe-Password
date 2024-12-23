@@ -174,6 +174,18 @@ const AuthenticatedPage = ({ user, email, password, setPassword, handleAuthentic
       console.error('Errore durante il caricamento del file:', error);
     }
   };
+
+  /**
+   * handleAddPassword: Gestisce l'apertura del modale per l'aggiunta di una nuova password.
+   */
+  const handleAddPassword = () => {
+    // Reimposta i campi di input del modale
+    setWebsiteTemp('');
+    setUsernameTemp('');
+    setPasswordTemp('');
+    // Mostra il modale di aggiunta
+    setModalVisible(true);
+  };
   
   return (  
     <View style={styles.container}>
