@@ -141,6 +141,20 @@ const AuthenticatedPage = ({ user, email, password, setPassword, handleAuthentic
     }
   };
 
+  /**
+   * createEmptyFileOnDevice: Crea un nuovo file vuoto sul file system del dispositivo.
+   */
+  const createEmptyFileOnDevice = async () => {
+    try {
+      // Scrive un array JSON vuoto nel file specificato
+      await FileSystem.writeAsStringAsync(localFilePath, JSON.stringify([]));
+      console.log('File creato con successo:', localFilePath.uri);
+      // Carica il file vuoto su Firebase Storage
+      uploadFile();
+    } catch (error) {
+      console.error('Errore durante la creazione del file:', error);
+    }
+  };
   
   return (  
     <View style={styles.container}>
