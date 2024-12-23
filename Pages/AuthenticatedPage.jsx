@@ -155,6 +155,25 @@ const AuthenticatedPage = ({ user, email, password, setPassword, handleAuthentic
       console.error('Errore durante la creazione del file:', error);
     }
   };
+
+  /**
+   * uploadFile: Carica il file delle password su Firebase Storage.
+   */
+  const uploadFile = async () => {
+    try {
+      console.log('Inizio caricamento del file...');
+      // Legge il contenuto del file come stringa
+      const fileContent = await FileSystem.readAsStringAsync(localFilePath);
+      console.log('Contenuto del file:\n', fileContent);
+      // Crea un nuovo oggetto Blob dal contenuto del file
+      const blob = new Blob([fileContent], { type: 'application/json' });
+      // Carica il blob su Firebase Storage
+      uploadBytes(storageRef, blob);
+      console.log('File caricato con successo!');
+    } catch (error) {
+      console.error('Errore durante il caricamento del file:', error);
+    }
+  };
   
   return (  
     <View style={styles.container}>
