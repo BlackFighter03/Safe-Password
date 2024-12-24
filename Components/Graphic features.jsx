@@ -54,12 +54,34 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 
+  headerBackground: {
+    backgroundColor: '#00e480',
+    paddingVertical:'3.5%',
+    paddingHorizontal: '1%',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+
+  iconAreaHeaderLeft:{
+    marginLeft:'2%',
+  },
+
+  iconAreaHeaderRight:{
+    marginRight:'2%',
+  },
+
+  iconHeader:{
+    fontSize: 27.5,
+    color: 'white',
+  },
+
   textHeader: {
-    marginLeft: '5%',
+    flex: 1,
+    textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 20,
-    color: '#ffff',
-    
+    color: 'white',
   },
 
   textHeaderTable: {
@@ -177,7 +199,7 @@ textFinishTable : {
       paddingVertical:'1.1%',
       paddingStart: '35.05%',
       paddingEnd: '35.05%',
-      backgroundColor: 'rgb(15, 193, 110)',
+      backgroundColor: 'rgb(3, 159, 86)',
       borderColor: "white",
       borderWidth: 0.8
   },
@@ -186,7 +208,7 @@ textFinishTable : {
     paddingVertical:'1.1%',
     paddingLeft:"37.9%",
     paddingRight:"37.9%",
-    backgroundColor: 'rgb(15, 193, 110)',
+    backgroundColor: 'rgb(3, 159, 86)',
     borderColor: "white",
     borderLeftWidth: 0.8,
     borderRightWidth:0.8,
