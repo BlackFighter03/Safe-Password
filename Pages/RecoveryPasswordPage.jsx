@@ -1,9 +1,9 @@
-import { Header as HeaderRNE, Icon } from '@rneui/themed';
-import { View, Text, TextInput, Button, Modal, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, TextInput, Button, Modal} from 'react-native';
 import { sendPasswordResetEmail } from '@firebase/auth';
 import { styles } from '../Components/Graphic features';
 import { useState } from 'react';
 import Table from '../Components/Table';
+import Header from '../Components/Header';
 
 const RecoveryPasswordPage = ({ auth, visible, forgotPasswordEmail, setForgotPasswordEmail, handleSignInPage }) => {
 
@@ -28,29 +28,25 @@ const RecoveryPasswordPage = ({ auth, visible, forgotPasswordEmail, setForgotPas
   return (
     <Modal visible={visible} animationType="slide">
       <View style={styles.container}>
-        <HeaderRNE
-          backgroundColor='#00e480'
-          leftComponent={
-            <View>
-              <TouchableOpacity onPress={handleSignInPage}>
-                <Icon type="ionicon" name="return-up-back-outline" color="white" />
-              </TouchableOpacity>
-            </View>
-          }
-          centerComponent={{ text: 'Recupera password', style: styles.textHeader, onPress: handleSignInPage }}
-        />
+        <Header
+          leftIcon={"return-up-back-outline"}
+          leftFun={handleSignInPage}
+          headerTxt={"Recupera password"}
+          rightIcon={""}
+          />
         <View style={styles.container} marginTop='20%'>
           <Text style={styles.text}>Inserisci la tua email:</Text>
           <TextInput style={styles.textInput} placeholder="example@email.com" autoCapitalize="none" onChangeText={setForgotPasswordEmail} value={forgotPasswordEmail} />
           <View style={styles.button} marginTop='15%'>
-            <Button title="Richiedi password" onPress={handleResetPassword} color='#00e480' />
+            <Button title="Richiedi password" onPress={handleResetPassword} color='rgb(3, 159, 86)' />
           </View>
         </View>
         <Table
           visible={info}
           setVisible={() => {
             setInfo(false);
-            handleSignInPage();}}
+            handleSignInPage();
+          }}
           title={title}
           msg={msg}
         />
