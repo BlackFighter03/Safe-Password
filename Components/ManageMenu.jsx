@@ -14,18 +14,18 @@ const ManageMenu = ({menuVisible, setMenuVisible, setTableVisible, setModalVisib
             <Button title="Visualizza" onPress={() => {
               setTableVisible(true);
               setMenuVisible(false); 
-            }}  color="#00e480"/>
+            }}  color="rgb(3, 159, 86)"/>
             <Button title="Modifica" onPress={() => {
               setModalVisible(true);
               setMenuVisible(false);
-            }}  color="#00e480"/>
+            }}  color="rgb(3, 159, 86)"/>
             <Button title="Elimina" onPress={() => {
               removePassword();
               setMenuVisible(false);
-            }}  color="#00e480"/>
+            }}  color="rgb(194, 8, 8)"/>
             <Button title="Annulla" onPress={() => {
               setMenuVisible(false);
-              }} color="rgb(225, 0, 0)" />
+              }} color="rgb(151, 8, 8)" />
           </View>
         </View>
       </Modal>

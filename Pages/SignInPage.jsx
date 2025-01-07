@@ -71,7 +71,7 @@ const SignInPage = ({
           )}
         </View>
         <View style={styles.button} marginTop='20%'>
-          <Button title="Esegui l'accesso" onPress={handleAuthentication} color='#00e480' />
+          <Button title="Esegui l'accesso" onPress={handleAuthentication} color='rgb(3, 159, 86)' />
         </View>
         <View marginTop='15%'>
           <Text style={styles.subtext}>Hai dimenticato la password? </Text>

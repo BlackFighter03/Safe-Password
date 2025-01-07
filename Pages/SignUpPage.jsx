@@ -69,7 +69,7 @@ const SignUpPage = ({ handleAuthentication, visible, setVisible, email, setEmail
                         )}
                     </View>
                     <View marginTop='20%' marginLeft='30%' marginRight='30%'>
-                        <Button title='Iscriviti' style={styles.button} onPress={subscribe} color='#00e480' />
+                        <Button title='Iscriviti' style={styles.button} onPress={subscribe} color='rgb(3, 159, 86)' />
                     </View>
                     {error ?
                         <View marginTop='10%'>

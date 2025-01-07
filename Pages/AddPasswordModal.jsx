@@ -124,8 +124,8 @@ const AddPasswordModal = ({ websiteTemp, usernameTemp, passwordTemp, visible, on
               null
             }
             <View style={styles.buttonContainer} marginTop={inputPercentualSetting}>
-              <Button title="Annulla" onPress={reset} color="red" />
-              <Button title="Salva" onPress={handleSave} color="#00e480" />
+              <Button title="Annulla" onPress={reset} color="rgb(194, 0, 0)" />
+              <Button title="Salva" onPress={handleSave} color="rgb(3, 159, 86)" />
             </View>
           </View>
         </View>

@@ -1,3 +1,3 @@
 export function removeFinalSpaces(stringa) {
-    return stringa.replace(/\s+$/g, '');
-  }
+  return stringa.replace(/\s+$/g, '');
+}

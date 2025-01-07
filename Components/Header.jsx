@@ -1,19 +1,26 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { styles } from "./Graphic features";
+import { Ionicons } from "@expo/vector-icons";
 
-
-export default Header = ({leftIcon, headerTxt, isRight, rightIcon}) => {
+export default Header = ({
+  leftIcon,
+  leftFun = () => {}, // Valore di default per leftFun
+  headerTxt = "",     // Valore di default per headerTxt
+  isRight = false,    // Valore di default per isRight
+  rightIcon,
+  rightFun = () => {}, // Valore di default per rightFun
+}) =>  {
 return(
     <View style={styles.headerBackground}>
-    <TouchableOpacity onPress={handleSignInPage} style={styles.iconAreaHeaderRight}>
-      <Ionicons name={String(leftIcon)} style={styles.iconHeader} onPress={handleSignInPage} />
+    <TouchableOpacity onPress={leftFun} style={styles.iconAreaHeaderRight}>
+      <Ionicons name={leftIcon} style={styles.iconHeader} onPress={leftFun} />
     </TouchableOpacity>
     <Text style={styles.textHeader}>{String(headerTxt)}</Text>
     {isRight ?
-      <TouchableOpacity onPress={handleSignInPage} style={styles.iconAreaHeaderRight}>
-      <Ionicons name={String(rightIcon)} style={styles.iconHeader} onPress={handleSignInPage} />
+      <TouchableOpacity onPress={rightFun} style={styles.iconAreaHeaderRight}>
+      <Ionicons name={rightIcon} style={styles.iconHeader} onPress={rightFun} />
     </TouchableOpacity>
-    : null}
+    :  <View style={styles.placeholder} />}
   </View>
 );
 };
