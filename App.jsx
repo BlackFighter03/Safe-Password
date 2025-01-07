@@ -49,17 +49,9 @@ const App = () => {
           setEmail(removeFinalSpaces(email));
           setPassword(removeFinalSpaces(password));
           setConfirmPassword(removeFinalSpaces(confirmPassword));
-          if (password !== confirmPassword) {
-            setWarningSignUp(true);
-            return;
-          } else {
-            try {
-              await createUser(auth, email, password);
-              console.log('User created successfully!');
-            } catch (error) {
-              setWarningSignUp(true);
-            }
-          }
+          await createUser(auth, email, password);
+          console.log('User created successfully!');
+          setShowSignUp(false);
         } else {
           setEmail(removeFinalSpaces(email));
           setPassword(removeFinalSpaces(password));
@@ -68,7 +60,10 @@ const App = () => {
         }
       }
     } catch (error) {
-      setWarning(true);
+      if(showSignUp)
+        setWarningSignUp(true);
+      else
+        setWarning(true);
     }
   };
 
