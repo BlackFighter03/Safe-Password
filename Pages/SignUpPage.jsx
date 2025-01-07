@@ -5,7 +5,6 @@ import { FontAwesome } from '@expo/vector-icons';
 import Table from '../Components/Table';
 import { useState } from 'react';
 
-
 const SignUpPage = ({ handleAuthentication, visible, setVisible, email, setEmail, password, setPassword, confirmPassword, setConfirmPassword, warningSignUp, setWarningSignUp }) => {
     const [showPassword, setShowPassword] = useState(true);
     const [showConfirmPassword, setShowConfirmPassword] = useState(true);
@@ -16,11 +15,12 @@ const SignUpPage = ({ handleAuthentication, visible, setVisible, email, setEmail
         if (password.length < 5) {
             setError(true);
             setPadTop("20%");
-        } else {
+        }else if (password != confirmPassword) {
+            setWarningSignUp(true); 
+        }else{
             setError(false);
             setPadTop("20%");
-            handleAuthentication(email, password, confirmPassword);
-            setVisible(false);
+            handleAuthentication();
         }
 
     }
@@ -28,7 +28,7 @@ const SignUpPage = ({ handleAuthentication, visible, setVisible, email, setEmail
     return (
         <Modal visible={visible} animationType='fade'>
             <KeyboardAwareScrollView
-                style={styles.container} // Imposta lo stile desiderato per la ScrollView. Assicurati che "flex: 1" sia presente.
+                style={styles.container}
                 resetScrollToCoords={{ x: 0, y: 0 }}
                 scrollEnabled={true}
             >
@@ -91,8 +91,8 @@ const SignUpPage = ({ handleAuthentication, visible, setVisible, email, setEmail
                     <Table
                         visible={warningSignUp}
                         setVisible={() => setWarningSignUp(false)}
-                        title={(password !== confirmPassword) ? "Attenzione" : "Avviso"}
-                        msg={(password !== confirmPassword) ? "Le password non sono uguali!" : "L'account esiste già"}
+                        title={(password != confirmPassword) ? "Attenzione" : "Avviso"}
+                        msg={(password != confirmPassword) ? "Le password non sono uguali!" : "L'account esiste già"}
                     />
                 </View>
             </KeyboardAwareScrollView>
