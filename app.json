@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "SafePassword",
+    "name": "Safe Password",
     "slug": "SafePassword",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -31,13 +31,19 @@
         "image": "./assets/Logo.png",
         "resizeMode": "contain",
         "backgroundColor": "#202134"
-      }
+      },
+      "package": "com.alessio003.SafePassword"
     },
     "web": {
       "favicon": "./assets/Logo.png"
     },
     "plugins": [
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "892ed594-562d-4317-a269-88f1bc74a1a5"
+      }
+    }
   }
 }
