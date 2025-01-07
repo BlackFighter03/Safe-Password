@@ -200,35 +200,24 @@ textFinishTable : {
     fontSize: 17,
   },
 
-  buttonFirstSideMenu: {
-      paddingVertical:'1.1%',
-      paddingStart: '35.05%',
-      paddingEnd: '35.05%',
+  buttonSideMenu: {
+      paddingVertical:'3%',
+      width: '99.5%',
       backgroundColor: 'rgb(3, 159, 86)',
+      alignItems: 'center',
+      justifyContent: 'center',
       borderColor: "white",
       borderWidth: 0.8
   },
 
-  buttonSideMenu: {
-    paddingVertical:'1.1%',
-    paddingLeft:"37.9%",
-    paddingRight:"37.9%",
-    backgroundColor: 'rgb(3, 159, 86)',
-    borderColor: "white",
-    borderLeftWidth: 0.8,
-    borderRightWidth:0.8,
-    borderBottomWidth:0.8
-},
-
   buttonLastSideMenu: {
-    paddingVertical:'1.1%',
-    paddingLeft:"37.9%",
-    paddingRight:"37.9%",
+    paddingVertical:'3%',
+    width: '99.5%',
     backgroundColor: 'rgb(194, 0, 0)',
+    alignItems: 'center',
+    justifyContent: 'center',
     borderColor: "white",
-    borderLeftWidth: 0.8,
-    borderRightWidth:0.8,
-    borderBottomWidth:0.8
+    borderWidth: 0.8
 },
 
   materialIconsAdd: {
