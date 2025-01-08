@@ -98,7 +98,7 @@ const SideMenu = ({ isOpen, onClose, onLogout, setChangePwd }) => {
             onClose();
             setChangePwd(true);
           }} 
-          style={styles.buttonFirstSideMenu}
+          style={styles.buttonSideMenu}
         >
           <Text style={styles.textSideMenu}>Cambia password</Text>
         </TouchableOpacity>
